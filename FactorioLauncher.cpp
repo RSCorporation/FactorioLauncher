@@ -16,6 +16,15 @@ int checker(char input[],char check[])
 	return result;
 }
 
+int CountDots(char inp[])
+{
+	int result=0;
+	for(int i = 0; i<strlen(inp); i++)
+		if(inp[i] == '.')
+			result++;
+	return result;
+}
+
 char* ReadLine(FILE *fp) {
     char * line = (char*)malloc(100), * linep = line;
     size_t lenmax = 100, len = lenmax;
@@ -126,9 +135,14 @@ int checkserver()
 		int playersonline = 0;
 		adminsonline = atoi( ReadLine(desc) );
 		printf("Admins online --= %d =-- :\n", adminsonline);
+		char* adminstr;
 		for(int counter = 0; counter < adminsonline; counter++)
 		{
-			printf("                  %s", ReadLine(desc));
+			adminstr = ReadLine(desc);
+			if(!checker(adminstr, (char*)"<server>\n")
+			{
+				printf("              %s", ReadLine(desc));
+			}
 		}
 		playersonline = atoi(ReadLine(desc));
 		printf("Players online %d:\n", playersonline);
